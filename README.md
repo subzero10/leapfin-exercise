@@ -62,6 +62,9 @@ cd leapfin-exercise
 # Install dependencies
 npm install
 
+# Transpile Typescript to Javascript for better performance (optional)
+npm run prepack
+
 # Run the program
 ./bin/run -h
 ```
@@ -72,7 +75,7 @@ npm install
 
 ## Implementation Notes:
 
-- The program is written in Nodejs, using Typescript. I chose Typescript to write strongly typed, better maintainable code. If you use the last installation option to run the program (clone from github), there will be a slight performance hit because the Typescript code is transpiled to Javascript at runtime. If you run the program from the npm installation or use the pre-built executable, it will execute Javascript directly.
+- The program is written in Nodejs, using Typescript. I chose Typescript to write strongly typed, better maintainable code.
 - I used [oclif](https://oclif.io/) to create generate the boilerplate for a cli program. It comes with a framework to parse arguments, write tests and package to single file executables.
 - I chose to use the native [`worker_threads` module from nodejs](https://nodejs.org/api/worker_threads.html) as my workers to do the processing (substring search). An alternative would be to fork processes, but that would be less efficient as they have a higher memory footprint and will take more time to start.
 - I spent some time looking for efficient algorithms to do substring search, however I was not able to match the performance of `String.indexOf()` in Nodejs. I also read [here](https://harrymoreno.com/2015/08/18/substring-searching-in-javascript.html) that Google’s V8 engine which runs nodejs has a very fast implementation of `String.indexOf()` (written in C++). I wrote some benchmark tests (found in `./benchmark/search-algorithm.test.ts`) just to compare with the [Boyer-Moore algorithm](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm) javascript implementation I used.
