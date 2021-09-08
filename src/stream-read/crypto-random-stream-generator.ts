@@ -3,7 +3,7 @@ import {StreamReader} from './stream-reader';
 
 export class CryptoRandomStreamGenerator implements StreamReader {
 
-    protected readonly MAX_CHUNK_SIZE = 10000000;
+    protected readonly MAX_CHUNK_SIZE = 100000000;
     private readonly chunkSize: number;
 
     constructor(chunkSize: number) {

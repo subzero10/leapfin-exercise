@@ -6,9 +6,9 @@ import {CryptoRandomStreamGenerator} from '../stream-read/crypto-random-stream-g
 import config from '../config';
 import {WorkerMessenger} from './worker-messenger';
 import {SearchAlgorithm} from '../search/search-algorithm';
-import {IndexOfStringSearch} from '../search/index-of-string-search';
 import {WorkerResults} from './worker-results';
 import {StreamReader} from '../stream-read/stream-reader';
+import {BoyerMooreSearch} from '../search/boyer-moore-search';
 
 const log = Debug('worker');
 
@@ -51,8 +51,9 @@ export class Worker {
     }
 
     private performSearch(stream: string) {
-        const foundIt = this.searchAlgorithm.search(stream, this.search);
-        this.bytesRead += stream.length;
+        const {index, bytesRead} = this.searchAlgorithm.search(stream, this.search);
+        const foundIt = index > -1;
+        this.bytesRead += bytesRead;
 
         if (foundIt) {
             log(`stream contains search[${this.search}] string: ${stream}`,);
@@ -90,7 +91,7 @@ export class Worker {
 if (workerData && parentPort) {
     new Worker(
         parentPort,
-        new IndexOfStringSearch(),
+        new BoyerMooreSearch(),
         new CryptoRandomStreamGenerator(config.streamChunkSize),
         workerData.search
     ).run();

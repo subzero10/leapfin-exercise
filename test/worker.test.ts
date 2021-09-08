@@ -3,10 +3,10 @@ import {expect} from '@oclif/test';
 import * as sinon from 'sinon';
 import {CryptoRandomStreamGenerator} from '../src/stream-read/crypto-random-stream-generator';
 import {Worker} from '../src/worker/worker';
-import {IndexOfStringSearch} from '../src/search/index-of-string-search';
 import {WorkerMessenger} from '../src/worker/worker-messenger';
 import {WorkerMessage} from '../src/worker/worker-message';
 import actions from '../src/worker/worker-actions';
+import {BoyerMooreSearch} from '../src/search/boyer-moore-search';
 
 function getStubs() {
     const dataStreamer = sinon.createStubInstance(CryptoRandomStreamGenerator);
@@ -25,7 +25,7 @@ describe('test worker processing', function () {
         dataStreamer.read.returns('blablaLpfnblabla');
         messenger.postMessage.returns();
 
-        const worker = new Worker(messenger, new IndexOfStringSearch(), <any>dataStreamer, 'Lpfn');
+        const worker = new Worker(messenger, new BoyerMooreSearch(), <any>dataStreamer, 'Lpfn');
         worker.run();
 
         expect(dataStreamer.read.callCount).to.equal(1);
@@ -41,7 +41,7 @@ describe('test worker processing', function () {
         dataStreamer.read.throws();
         messenger.postMessage.returns();
 
-        const worker = new Worker(messenger, new IndexOfStringSearch(), <any>dataStreamer, 'Lpfn');
+        const worker = new Worker(messenger, new BoyerMooreSearch(), <any>dataStreamer, 'Lpfn');
         worker.run();
 
         expect(dataStreamer.read.callCount).to.equal(1);
@@ -59,7 +59,7 @@ describe('test worker processing', function () {
         dataStreamer.read.onThirdCall().returns('blewblewLpfnblew');
         messenger.postMessage.returns();
 
-        const worker = new Worker(messenger, new IndexOfStringSearch(), <any>dataStreamer, 'Lpfn');
+        const worker = new Worker(messenger, new BoyerMooreSearch(), <any>dataStreamer, 'Lpfn');
         worker.run();
 
         expect(dataStreamer.read.callCount).to.equal(3);
@@ -75,7 +75,7 @@ describe('test worker processing', function () {
         messenger.postMessage.returns();
         const dataStreamer = sinon.spy(new CryptoRandomStreamGenerator(10000000000));
 
-        const worker = new Worker(messenger, new IndexOfStringSearch(), <any>dataStreamer, 'Lpfn');
+        const worker = new Worker(messenger, new BoyerMooreSearch(), <any>dataStreamer, 'Lpfn');
         worker.run();
 
         expect(dataStreamer.read.callCount).to.equal(1);
