@@ -22,10 +22,23 @@ Please package your submission with tar or zip. The package must include a READM
 
 Note: Nodejs is bundled in the executable so it doesn't have to be installed on your machine. If you have it installed it will not mess up your current setup.
 
-1. Open the [AWS S3 bucket](URL HERE)
-2. Download the tarball that matches your operating system
-3. Unpack - TODO
-4. Run `leapfin-exercise -h`
+Choose a tarball that matches your operating system:
+- [linux-x64](https://leapfin-exercise.s3.amazonaws.com/leapfin-exercise-linux-x64.tar.gz)
+- [linux-arm](https://leapfin-exercise.s3.amazonaws.com/leapfin-exercise-linux-arm.tar.gz)
+- [darwin-x64](https://leapfin-exercise.s3.amazonaws.com/leapfin-exercise-darwin-x64.tar.gz)
+- [win32-x64](https://leapfin-exercise.s3.amazonaws.com/leapfin-exercise-win32-x64.tar.gz)
+- [win32-x86](https://leapfin-exercise.s3.amazonaws.com/leapfin-exercise-win32-x86.tar.gz)
+
+```shell
+# Download tarball and extract
+curl {URL_FROM_ABOVE} | tar -xz
+
+# Program should be downloaded and extracted in a folder leapfin-exercise
+cd leapfin-exercise
+
+# Run program
+./bin/run -h
+```
 
 ### NPM
 
@@ -53,15 +66,14 @@ npm install
 ./bin/run -h
 ```
 
-    
 ## Demo/Screenshot:
 
 ![screenshot.png](screenshot.png)
 
 ## Implementation Notes:
 
-- The program is written in Nodejs, using Typescript. I chose Typescript to write strongly typed, better maintainable code. If you build the program locally and run it with `./bin/run`, there will be a slight performance hit because the Typescript code is transpiled to Javascript at runtime. If you run the program from the npm installation or use the pre-built executable, it will execute Javascript directly.
+- The program is written in Nodejs, using Typescript. I chose Typescript to write strongly typed, better maintainable code. If you use the last installation option to run the program (clone from github), there will be a slight performance hit because the Typescript code is transpiled to Javascript at runtime. If you run the program from the npm installation or use the pre-built executable, it will execute Javascript directly.
 - I used [oclif](https://oclif.io/) to create generate the boilerplate for a cli program. It comes with a framework to parse arguments, write tests and package to single file executables.
 - I chose to use the native [`worker_threads` module from nodejs](https://nodejs.org/api/worker_threads.html) as my workers to do the processing (substring search). An alternative would be to fork processes, but that would be less efficient as they have a higher memory footprint and will take more time to start.
 - I spent some time looking for efficient algorithms to do substring search, but it turns out that `String.indexOf()` is pretty fast. I read [here](https://harrymoreno.com/2015/08/18/substring-searching-in-javascript.html) that Google’s V8 engine which runs nodejs has a very fast implementation of `String.indexOf()`. It uses the [Boyer-Moore algorithm](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm) together with some tweaks based on the inputs. I wrote some tests (found in `./test/search-algorithm.test.ts`) to compare with an [open source package](https://www.npmjs.com/package/fast-string-search) that also implements the Boyer-Moore algorithm. `String.indexOf()` performs faster.
-- Finally, if you run the program with a small timeout (< 1 second), you might experience a timeout for all workers because they will probably timeout before they are initialized and ready to process. I assume this is expected since the instructions say “the total elapsed time of the program should not exceed the timeout limit”.
+- Finally, if you run the program with a small timeout (< 1 second), you might experience a timeout for all workers because the timeout will kick in before the workers are initialized and start processing. I assume this is expected since the instructions say “the total elapsed time of the program should not exceed the timeout limit”.
