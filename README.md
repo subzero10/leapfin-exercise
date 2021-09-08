@@ -24,12 +24,28 @@ Please package your submission with tar or zip. The package must include a READM
 
 ## Installation:
 
-- NPM
-    - nodejs is bundled in the executable so you don’t have to have it installed on your machine. if you have it installed it will not mess up your current setup
-- Use pre-built shell executable
-    - nodejs is bundled in the executable so you don’t have to have it installed on your machine. if you have it installed it will not mess up your current setup
-- Build locally
-    - you will need to have a relatively recent version of nodejs (>= 8.50)
+### Use pre-built shell executable
+
+- nodejs is bundled in the executable so you don’t have to have it installed on your machine. if you have it installed it will not mess up your current setup
+
+### NPM
+
+- nodejs is bundled in the executable so you don’t have to have it installed on your machine. if you have it installed it will not mess up your current setup 
+
+### Clone from github - build locally
+
+You will need to have a relatively recent version of nodejs (>= 8.50)
+```shell
+# Clone Project
+git clone https://github.com/subzero10/leapfin-exercise.git
+cd leapfin-exercise
+
+# Install dependencies
+npm install
+
+# Run the program
+./bin/run -h
+```
 
     
 ## Demo/Screenshot:
