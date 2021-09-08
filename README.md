@@ -18,6 +18,40 @@ Please package your submission with tar or zip. The package must include a READM
 
 ## Installation:
 
+### NPM
+
+You will need to have a relatively recent version of nodejs (>= 8.50) and npm.
+```shell
+# Install package globally
+npm install -g leapfin-exercise
+
+# Run the program
+leapfin-exercise -h
+``` 
+
+### Clone from github (or use the attached zip file from the email) - build locally
+
+You will need to have a relatively recent version of nodejs (>= 8.50) and npm.
+```shell
+# Github - Clone Project
+git clone https://github.com/subzero10/leapfin-exercise.git
+
+# Or unzip file to a folder named leapfin-exercise
+unzip leapfin-exercise.zip -d leapfin-exercise
+
+# Open program root folder
+cd leapfin-exercise
+
+# Install dependencies
+npm install
+
+# Transpile Typescript to Javascript for better performance
+npm run prepack
+
+# Run the program
+./bin/run -h
+```
+
 ### Use pre-built shell executable
 
 Note: Nodejs is bundled in the executable so it doesn't have to be installed on your machine. If you have it installed it will not mess up your current setup.
@@ -37,35 +71,6 @@ curl {URL_FROM_ABOVE} | tar -xz
 cd leapfin-exercise
 
 # Run program
-./bin/run -h
-```
-
-### NPM
-
-You will need to have a relatively recent version of nodejs (>= 8.50) and npm.
-```shell
-# Install package globally
-npm install -g leapfin-exercise
-
-# Run the program
-leapfin-exercise -h
-``` 
-
-### Clone from github - build locally
-
-You will need to have a relatively recent version of nodejs (>= 8.50) and npm.
-```shell
-# Clone Project
-git clone https://github.com/subzero10/leapfin-exercise.git
-cd leapfin-exercise
-
-# Install dependencies
-npm install
-
-# Transpile Typescript to Javascript for better performance (optional)
-npm run prepack
-
-# Run the program
 ./bin/run -h
 ```
 
