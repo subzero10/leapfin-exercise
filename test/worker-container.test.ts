@@ -1,7 +1,7 @@
 import {expect, test} from '@oclif/test';
 
 import * as sinon from 'sinon';
-import {WorkerContainer} from '../src/domain/worker-container';
+import {WorkerContainer} from '../src/worker/worker-container';
 
 const getWorkerContainerStub = () => {
     const workerContainer = new WorkerContainer('Lpfn', 10, 10);

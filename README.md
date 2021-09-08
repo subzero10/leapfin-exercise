@@ -1,11 +1,5 @@
 # Leapfin Interview Exercise
 
-### Todo:
-
-- [ ] publish cli app
-- [ ] run in ts-node and node
-- [ ] write installation instructions
-
 ## The Exercise:
 
 Write a program in a language of your choice that spawns 10 workers (threads, processes, actors, whatever), where each worker simultaneously searches a stream of random (or pseudo-random) data for the string 'Lpfn', then informs the parent of the following data fields via some form of inter-process communication or shared data structure:
@@ -26,15 +20,27 @@ Please package your submission with tar or zip. The package must include a READM
 
 ### Use pre-built shell executable
 
-- nodejs is bundled in the executable so you don’t have to have it installed on your machine. if you have it installed it will not mess up your current setup
+Note: Nodejs is bundled in the executable so it doesn't have to be installed on your machine. If you have it installed it will not mess up your current setup.
+
+1. Open the [AWS S3 bucket](URL HERE)
+2. Download the tarball that matches your operating system
+3. Unpack - TODO
+4. Run `leapfin-exercise -h`
 
 ### NPM
 
-- nodejs is bundled in the executable so you don’t have to have it installed on your machine. if you have it installed it will not mess up your current setup 
+You will need to have a relatively recent version of nodejs (>= 8.50) and npm.
+```shell
+# Install package globally
+npm install -g leapfin-exercise
+
+# Run the program
+leapfin-exercise -h
+``` 
 
 ### Clone from github - build locally
 
-You will need to have a relatively recent version of nodejs (>= 8.50)
+You will need to have a relatively recent version of nodejs (>= 8.50) and npm.
 ```shell
 # Clone Project
 git clone https://github.com/subzero10/leapfin-exercise.git

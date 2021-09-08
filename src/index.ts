@@ -1,6 +1,6 @@
 import {Command, flags} from '@oclif/command';
 import config from './config';
-import {WorkerContainer} from './domain/worker-container';
+import {WorkerContainer} from './worker/worker-container';
 
 class LeapfinExercise extends Command {
     static description = 'This program spawns worker threads to search a stream of data for the string \'Lpfn\''

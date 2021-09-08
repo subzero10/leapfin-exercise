@@ -1,6 +1,6 @@
 import cli from 'cli-ux';
 import {WorkerResultsExporter} from './worker-results-exporter';
-import {WorkerResults} from '../domain/worker-results';
+import {WorkerResults} from '../worker/worker-results';
 
 export class WorkerResultsConsoleExporter implements WorkerResultsExporter {
     export(results: WorkerResults[]): void {

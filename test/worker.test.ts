@@ -2,11 +2,11 @@ import {expect} from '@oclif/test';
 
 import * as sinon from 'sinon';
 import {CryptoRandomStreamGenerator} from '../src/stream-read/crypto-random-stream-generator';
-import {Worker} from '../src/domain/worker';
+import {Worker} from '../src/worker/worker';
 import {IndexOfStringSearch} from '../src/search/index-of-string-search';
-import {WorkerMessenger} from '../src/domain/worker-messenger';
-import {WorkerMessage} from '../src/domain/worker-message';
-import actions from '../src/domain/worker-actions';
+import {WorkerMessenger} from '../src/worker/worker-messenger';
+import {WorkerMessage} from '../src/worker/worker-message';
+import actions from '../src/worker/worker-actions';
 
 function getStubs() {
     const dataStreamer = sinon.createStubInstance(CryptoRandomStreamGenerator);
