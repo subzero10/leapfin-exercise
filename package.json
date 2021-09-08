@@ -1,7 +1,7 @@
 {
   "name": "leapfin-exercise",
   "description": "Leapfin interview exercise",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Pangratios Cosma @subzero10",
   "bin": {
     "leapfin-exercise": "./bin/run"
