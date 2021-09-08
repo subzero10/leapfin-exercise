@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run" type="NodeJSConfigurationType" application-parameters="-w 10" nameIsGenerated="true" path-to-js-file="./bin/run" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="DEBUG" value="*,-@oclif/config" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

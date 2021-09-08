@@ -1,0 +1,60 @@
+{
+  "name": "leapfin-exercise",
+  "description": "Leapfin interview exercise",
+  "version": "0.0.1",
+  "author": "Pangratios Cosma @subzero10",
+  "bin": {
+    "leapfin-exercise": "./bin/run"
+  },
+  "bugs": "https://github.com/subzero10/leapfin-exercise/issues",
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/test": "^1.2.8",
+    "@types/chai": "^4.2.21",
+    "@types/debug": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.17.60",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.10"
+  },
+  "engines": {
+    "node": ">=8.5.0"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "homepage": "https://github.com/subzero10/leapfin-exercise",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "bin": "leapfin-exercise"
+  },
+  "repository": "subzero10/leapfin-exercise",
+  "scripts": {
+    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "lint": "eslint . --fix",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.3",
+    "cli-ux": "^5.6.3",
+    "debug": "^4.3.2",
+    "fast-string-search": "^1.4.3",
+    "sinon": "^11.1.2",
+    "tslib": "^1.14.1"
+  }
+}
