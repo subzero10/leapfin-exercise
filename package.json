@@ -37,7 +37,12 @@
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
-    "bin": "leapfin-exercise"
+    "bin": "leapfin-exercise",
+    "update": {
+      "s3": {
+        "bucket": "leapfin-exercise"
+      }
+    }
   },
   "repository": "subzero10/leapfin-exercise",
   "scripts": {
